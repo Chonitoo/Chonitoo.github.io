@@ -1,0 +1,16 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Autorización TikTok</title><link rel="stylesheet" href="estilo.css"></head><body><main>
+<h1>Autorización de TikTok</h1>
+<p id="msg">Leyendo respuesta…</p>
+<p><input id="code" readonly style="width:100%;font-size:16px;padding:8px"></p>
+<p><button id="copy" style="font-size:16px;padding:8px 16px">Copiar código</button></p>
+<p class="mut">Copia este código y pégalo en la ventana de la fábrica (AUTORIZAR_TIKTOK). Caduca en unos minutos.</p>
+<script>
+const q=new URLSearchParams(location.search);const c=q.get('code');const e=q.get('error');
+const m=document.getElementById('msg');const i=document.getElementById('code');
+if(c){m.textContent='Listo. Este es tu código de autorización ('+(q.get('state')||'')+'):';i.value=c;}
+else{m.textContent='No llegó ningún código. '+(e?('Error: '+e+' '+(q.get('error_description')||'')):'');}
+document.getElementById('copy').onclick=()=>{i.select();navigator.clipboard.writeText(i.value).catch(()=>document.execCommand('copy'));};
+</script>
+<p><a href="index.html">Fábrica de Videos IA</a> · <a href="privacidad.html">Privacidad</a> · <a href="terminos.html">Términos</a></p>
+</main></body></html>
